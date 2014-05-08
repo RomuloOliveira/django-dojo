@@ -1,0 +1,9 @@
+{% if last_tweets %}
+    <ul>
+        {% for tweet in last_tweets %}
+            <li><a href='/tweets/{{ tweet.id }}' >@{{ tweet.user }}: {{ tweet.text }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tweets</p>
+{% endif %}
