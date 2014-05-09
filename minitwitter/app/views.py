@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from minitwitter.app.models import Tweet
 
 def index(request):
-    last_tweets = Tweet.objects.all()[:15]
+    last_tweets = Tweet.objects.all().order_by('-timestamp')[:15]
 
     return render(request, 'tweets/index.html', {'last_tweets': last_tweets})
 

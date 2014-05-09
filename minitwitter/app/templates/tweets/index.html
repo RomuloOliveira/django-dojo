@@ -1,9 +1,21 @@
+<h1>Post a new tweet</h1>
+
+<form action="{% url 'app:tweet' %}">
+
+</form>
+
+<table>
+    <tr>
+        <th>Tweets</th>
+    </tr>
 {% if last_tweets %}
-    <ul>
-        {% for tweet in last_tweets %}
-            <li><a href='{% url 'show' tweet.user tweet.id %}' >@{{ tweet.user }}: {{ tweet.text }}</a></li>
-        {% endfor %}
-    </ul>
+    {% for tweet in last_tweets %}
+        <tr>
+            <td>@{{ tweet.user }}: {{ tweet.text }}</td>
+            <td><a href='{% url 'show' tweet.user tweet.id %}' >Show</a></td>
+        </tr>
+    {% endfor %}
 {% else %}
     <p>No tweets</p>
 {% endif %}
+</table>
