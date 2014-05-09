@@ -8,9 +8,9 @@ def index(request):
 
     return render(request, 'tweets/index.html', {'last_tweets': last_tweets})
 
-def show(request, tweet_id):
+def show(request, user, tweet_id):
     try:
-        tweet = Tweet.objects.get(id=tweet_id)
+        tweet = Tweet.objects.get(id=tweet_id, user=user)
     except Tweet.DoesNotExist, e:
         raise Http404('Tweet not found')
     else:
